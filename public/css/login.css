@@ -1,0 +1,74 @@
+/*
+ * Self-contained stylesheet for login.php only — it does NOT import or
+ * depend on app.css. Kept deliberately separate (and separately
+ * SRI-pinned in login.php) so it stays a small, rarely-changing file: app.css
+ * is edited constantly as dashboard features are added, which would make an
+ * integrity hash on it break on every deploy. This file only changes when
+ * the login page itself changes.
+ */
+
+:root {
+  --bg: #f4f5f9;
+  --panel: #ffffff;
+  --border: #e4e7ee;
+  --text: #1c1f2a;
+  --muted: #6b7280;
+  --primary: #4f46e5;
+  --primary-dark: #4338ca;
+  --danger: #dc2626;
+  --radius: 10px;
+  --shadow: 0 1px 2px rgba(16, 24, 40, .06), 0 1px 3px rgba(16, 24, 40, .08);
+}
+
+* { box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  font-size: 14px;
+}
+
+.sidebar-brand { display: flex; align-items: center; gap: 10px; padding: 2px 2px 8px; }
+.brand-mark {
+  width: 36px; height: 36px; border-radius: 9px;
+  background: linear-gradient(135deg, var(--primary), #7c3aed);
+  color: #fff; display: flex; align-items: center; justify-content: center;
+  font-weight: 700; font-size: 12px; letter-spacing: .5px;
+}
+.brand-title { font-weight: 700; font-size: 15px; }
+.brand-sub { font-size: 11px; color: var(--muted); }
+
+.card {
+  background: var(--panel); border: 1px solid var(--border); border-radius: var(--radius);
+  padding: 16px 18px; box-shadow: var(--shadow);
+}
+
+label { font-size: 12.5px; font-weight: 600; color: var(--muted); display: block; margin-bottom: 4px; }
+.field { margin-bottom: 14px; }
+
+input[type="text"], input[type="password"] {
+  width: 100%; padding: 8px 10px; border: 1px solid var(--border); border-radius: 8px;
+  font-size: 13px; font-family: inherit; background: #fff; color: var(--text);
+}
+input[type="text"]:focus, input[type="password"]:focus {
+  outline: none; border-color: var(--primary); box-shadow: 0 0 0 3px rgba(79, 70, 229, .12);
+}
+
+.btn {
+  border: 1px solid var(--border); background: #fff; color: var(--text);
+  padding: 8px 14px; border-radius: 8px; font-size: 13px; font-weight: 600;
+  cursor: pointer; display: inline-flex; align-items: center; gap: 6px;
+}
+.btn-primary { background: var(--primary); border-color: var(--primary); color: #fff; }
+.btn-primary:hover { background: var(--primary-dark); }
+.btn-block { width: 100%; justify-content: center; }
+
+.login-wrap { min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px; }
+.login-card { width: 100%; max-width: 360px; padding: 26px 28px; }
+.login-brand { margin-bottom: 18px; }
+.login-error {
+  background: #fef2f2; color: var(--danger); border: 1px solid #fecaca;
+  border-radius: 8px; padding: 9px 12px; font-size: 12.5px; margin-bottom: 14px;
+}
